@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class CountMoney2 {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
         int input = 25400;
         // 25000원을 받고 화폐별 몇 장으로 변환이 가능하며, 남은 금액은 얼마인가?
 
@@ -41,7 +40,5 @@ public class CountMoney2 {
         // 10원으로 변환했을 때, 변환 후 남은 금액
         System.out.printf("10권 : %d장, 나머지 : %d 원 \n", input / money10, input % money10);
         input %= money10;
-
-        sc.close();
     }
 }
