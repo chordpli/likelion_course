@@ -16,5 +16,7 @@ public class CountMoney {
             System.out.println(moneyName[i] + count + "개");
             input -= money[i] * count;
         }
+
+        sc.close();
     }
 }
