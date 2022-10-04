@@ -12,14 +12,11 @@ public class CountMoney {
 
         int input = 25300;
         int count = 0;
-        for(int i = 0; i < 8; i++){
-            count = input/money[i];
-            if(count == 0){
-                if(input == 0){
-                    break;
-                }
+        for (int i = 0; i < 8; i++) {
+            count = input / money[i];
+            if (count == 0) {
                 continue;
-            }else{
+            } else {
                 System.out.println(moneyName[i] + count + "개");
                 input -= money[i] * count;
             }
