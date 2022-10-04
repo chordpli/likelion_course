@@ -9,5 +9,7 @@
 
 ## Week3 (10.04 ~ 10.07)
 ### day 2
-  - Array
-  - 화폐 매수를 구하는 프로그램 
+ - git, github, source tree
+ - Array
+ - 화폐 매수를 구하는 프로그램 
+ - 코드업 1156 짝수와 홀수
