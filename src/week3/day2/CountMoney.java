@@ -15,7 +15,9 @@ public class CountMoney {
         for (int i = 0; i < 8; i++) {
             count = input / money[i];
             if (count == 0) {
-                continue;
+                if (input == 0) {
+                    break;
+                }
             } else {
                 System.out.println(moneyName[i] + count + "개");
                 input -= money[i] * count;
