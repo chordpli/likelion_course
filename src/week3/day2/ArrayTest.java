@@ -1,4 +1,4 @@
-package week2.day2;
+package week3.day2;
 
 public class ArrayTest {
     public static void main(String[] args) {
