@@ -11,5 +11,9 @@ public class ArrayTest {
             intArrays2[i] = i+1;
         }
 
+        for(int i : intArrays2){
+            System.out.print(i + " ");
+        }
+
     }
 }
