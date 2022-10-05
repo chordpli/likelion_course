@@ -1,11 +1,11 @@
 package week3.day3.evenodd;
 
-public class KoreanWordMaker implements WordMaker{
+public class KoreanWordMaker implements WordMaker {
     @Override
     public String getWord(int a) {
-        if(a%2==0){
+        if (a % 2 == 0) {
             return "짝수";
-        }else{
+        } else {
             return "홀수";
         }
     }
