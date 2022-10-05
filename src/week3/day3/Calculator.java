@@ -1,8 +1,24 @@
 package week3.day3;
 
 public class Calculator {
+    private int a;
+    private int b;
+
+    public Calculator(int a, int b) {
+        this.a = a;
+        this.b = b;
+    }
+
+    public void plus() {
+        System.out.println(a + b);
+    }
+
     public void plus(int a, int b) {
         System.out.println(a + b);
+    }
+
+    public void minus() {
+        System.out.println(a - b);
     }
 
     public void minus(int a, int b) {
