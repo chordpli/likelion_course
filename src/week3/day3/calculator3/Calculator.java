@@ -10,7 +10,7 @@ public class Calculator {
         this.numberGenerator = numberGenerator;
     }
 
-    public void plus(){
-        System.out.println(10 + numberGenerator.generate(20));
+    public void plus(int num){
+        System.out.println(10 + numberGenerator.generate(num));
     }
 }

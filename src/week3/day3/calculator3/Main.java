@@ -9,7 +9,9 @@ public class Main {
 
         Calculator randomNumberCalculator = new Calculator(numberGenerator);
         Calculator specificNumberCalculator = new Calculator(new SpecificNumberGenerator());
-        randomNumberCalculator.plus();
+        randomNumberCalculator.plus(5);
 
+        Calculator byPassNumberCalculator = new Calculator(new ByPassNumberMaker());
+        byPassNumberCalculator.plus(50);
     }
 }
