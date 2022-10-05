@@ -17,7 +17,7 @@
    + 1161 : 홀수와 짝수 그리고 더하기
    
 ### day 3
- - Intellij Java Project 빌드
+ - Intellij github Java Project 빌드
    + branch
    + git remote swap
  - Class 사용 이유
@@ -27,5 +27,3 @@
  - Collection
    - List
      - ArrayList
-   - Set
-   - Map
