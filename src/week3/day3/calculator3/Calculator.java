@@ -11,12 +11,13 @@ public class Calculator {
         this.numberGenerator = numberGenerator;
         this.baseNumber = 10;
     }
+
     public Calculator(NumberGenerator numberGenerator, int baseNumber) {
         this.numberGenerator = numberGenerator;
         this.baseNumber = baseNumber;
     }
 
-    public void plus(int num){
-        System.out.println(baseNumber + numberGenerator.generate(num));
+    public void plus(int num) {
+        System.out.println(baseNumber + numberGenerator.create(num));
     }
 }
