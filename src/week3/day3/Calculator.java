@@ -10,7 +10,8 @@ public class Calculator {
     }
 
     public void divide(int a, int b) {
-        System.out.println(a / b);
+        float divide = (float) a/ b;
+        System.out.println(divide);
     }
 
     public void multiple(int a, int b) {
