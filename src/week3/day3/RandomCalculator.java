@@ -18,7 +18,7 @@ public class RandomCalculator {
         try{
             float divide = (float) a/ random.randomNumberCreator();
             System.out.println(divide);
-        }catch (Exception e){
+        }catch (ArithmeticException e){
             System.out.println("랜덤하게 생성된 숫자가 0입니다.");
         }
 
