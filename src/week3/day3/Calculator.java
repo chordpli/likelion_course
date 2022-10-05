@@ -3,6 +3,7 @@ package week3.day3;
 public class Calculator {
     private int a;
     private int b;
+    private NumberCreator randomNumberCreator;
 
     public Calculator(int a, int b) {
         this.a = a;
