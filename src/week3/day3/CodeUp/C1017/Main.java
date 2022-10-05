@@ -1,12 +1,16 @@
-package week3.day2.CodeUp.C1012;
+package week3.day3.CodeUp.C1017;
 
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        float number = sc.nextFloat();
-        System.out.printf("%.6f", number);
+        int a = sc.nextInt();
+
+        for (int i = 0; i < 3; i++) {
+            System.out.print(a + " ");
+        }
+
         sc.close();
     }
 }
