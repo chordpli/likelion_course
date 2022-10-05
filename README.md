@@ -26,5 +26,6 @@
      + interface 사용
  - Collection
    - List
+     - ArrayList
    - Set
    - Map
