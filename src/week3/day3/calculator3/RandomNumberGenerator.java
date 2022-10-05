@@ -5,4 +5,9 @@ public class RandomNumberGenerator implements NumberGenerator{
     public int generate(int num) {
         return (int)(Math.random() * num);
     }
+
+    @Override
+    public int create(int num) {
+        return num;
+    }
 }
