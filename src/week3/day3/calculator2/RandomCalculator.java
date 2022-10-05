@@ -1,4 +1,4 @@
-package week3.day3;
+package week3.day3.calculator2;
 
 public class RandomCalculator {
     private int randomTo;

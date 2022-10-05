@@ -1,4 +1,6 @@
-package week3.day3;
+package week3.day3.calculator1;
+
+import week3.day3.calculator2.NumberCreator;
 
 public class Calculator {
     private int a;
