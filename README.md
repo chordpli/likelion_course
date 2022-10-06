@@ -6,8 +6,9 @@
  - 안다 -> 검색하지않고 구현할 수 있다.
 <br>
 
+## Week3 (10.04 ~ 10.07) 
+<details><summary> Days </summary>
 
-## Week3 (10.04 ~ 10.07)
 ### day 2
  - git, github, source tree
  - Array
@@ -27,3 +28,11 @@
  - Collection
    - List
      - ArrayList
+
+### day 4
+- Collection
+    - List
+        - ArrayList
+
+
+</details>
