@@ -13,10 +13,20 @@ public class ReadFile {
         this.filename = filename;
     }
 
-    public char readOneByte() throws Exception {
+    public char readOneChar() throws Exception {
         try (BufferedReader br = Files.newBufferedReader(
                 Paths.get(filename), StandardCharsets.UTF_8)) {
             return br.readLine().charAt(0);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String readTwoChar() throws Exception {
+        try (BufferedReader br = Files.newBufferedReader(
+                Paths.get(filename), StandardCharsets.UTF_8)) {
+            String line = br.readLine();
+            return String.valueOf(line.charAt(0)) + String.valueOf(line.charAt(1));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -48,8 +58,10 @@ public class ReadFile {
 
     public static void main(String[] args) throws Exception {
         ReadFile readFile = new ReadFile("./a_file.txt");
-        char c = (char)readFile.readOneByte();
+        char c = (char)readFile.readOneChar();
+        String twoC = readFile.readTwoChar();
         System.out.println(c);
+        System.out.println(twoC);
         readFile.readLine();
         readFile.readOptionByte(3);
     }
