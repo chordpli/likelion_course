@@ -10,9 +10,14 @@ public class MapExercise2 {
         String alphabet;
         for(int i = 0; i<repoAddr.length(); i++){
             alphabet = String.valueOf(repoAddr.charAt(i));
-            alphabetCnt.put(alphabet, alphabetCnt.getOrDefault(alphabet,0)+1);
+            for(char j = 'a'; j <= 'z'; j++){
+                if(alphabet.equals(String.valueOf(j))){
+                    alphabetCnt.put(alphabet, alphabetCnt.getOrDefault(alphabet,0)+1);
+                    break;
+                }
+            }
         }
 
-        System.out.println(alphabetCnt.get("t"));
+        System.out.println(alphabetCnt.get("_"));
     }
 }
