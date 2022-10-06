@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class MapExercise2 {
     public static void main(String[] args) {
-        String repoAddr = "https://github.com/Qkite/java-excercise-01/tree/main/src".toLowerCase();
+        String repoAddr = "https://github.com/chordpli/likelion_course/tree/main/src/week3/day4/collection/set".toLowerCase();
         // a ~ z
         HashMap<String, Integer> alphabetCnt = new HashMap<>();
         String alphabet;
