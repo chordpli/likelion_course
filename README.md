@@ -37,6 +37,10 @@
     - set
       - HashSet
         - Deduplication alphabet, number
-
+- File
+  - Read
+      - one Byte Read
+      - N Byte Read
+      - Line Read
 
 </details>
