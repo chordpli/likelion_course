@@ -7,8 +7,10 @@ public class MapExercise2 {
         String repoAddr = "https://github.com/Qkite/java-excercise-01/tree/main/src".toLowerCase();
         // a ~ z
         HashMap<String, Integer> alphabetCnt = new HashMap<>();
+        String alphabet;
         for(int i = 0; i<repoAddr.length(); i++){
-            alphabetCnt.put(String.valueOf(repoAddr.charAt(i)), alphabetCnt.getOrDefault(String.valueOf(repoAddr.charAt(i)),0)+1);
+            alphabet = String.valueOf(repoAddr.charAt(i));
+            alphabetCnt.put(alphabet, alphabetCnt.getOrDefault(alphabet,0)+1);
         }
 
         System.out.println(alphabetCnt.get("t"));
