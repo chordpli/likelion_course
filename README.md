@@ -34,6 +34,7 @@
 - Collection
     - List
         - ArrayList
+    - map
     - set
       - HashSet
         - Deduplication alphabet, number
