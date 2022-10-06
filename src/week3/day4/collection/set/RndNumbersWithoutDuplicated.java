@@ -1,6 +1,7 @@
 package week3.day4.collection.set;
 
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Set;
 
 public class RndNumbersWithoutDuplicated {
@@ -10,6 +11,9 @@ public class RndNumbersWithoutDuplicated {
         for (int i = 0; i < 50; i++) {
             deduplication.add(randomNumberGenerator.generate(10));
         }
-        System.out.println(deduplication);
+
+        for (Integer i : deduplication) {
+            System.out.println(i);
+        }
     }
 }
