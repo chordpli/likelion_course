@@ -54,7 +54,8 @@ public class FileExercise {
     }
 
     public void readAllLine() throws Exception {
-        try (BufferedReader br = new BufferedReader(new FileReader(filename), 16 * 1024)) {
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename), 16 * 1024);
             String line;
             while ((line = br.readLine()) != null) {
                 System.out.println(line);
