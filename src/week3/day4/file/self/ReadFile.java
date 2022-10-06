@@ -1,4 +1,4 @@
-package week3.day4.file;
+package week3.day4.file.self;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
