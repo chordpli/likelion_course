@@ -9,9 +9,21 @@ public class FileExercise {
         File dir = new File("."); // 디렉토리로 접근
         File files[] = dir.listFiles(); // 파일들이 담김
 
-        for(File f : files){
+        for (File f : files) {
             System.out.println(f);
         }
         //System.out.println(files[0]);
     }
+/*
+    .\.git
+    .\.gitignore
+    .\.idea
+    .\a_file.txt
+    .\out
+    .\README.md
+    .\src
+    .\techItCourse.iml
+*/
+
+
 }
