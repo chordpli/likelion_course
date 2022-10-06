@@ -13,7 +13,7 @@ public class ReadFile {
         this.filename = filename;
     }
 
-    public char readAByte() throws Exception {
+    public char readOneByte() throws Exception {
         try (BufferedReader br = Files.newBufferedReader(
                 Paths.get(filename), StandardCharsets.UTF_8)) {
             return br.readLine().charAt(0);
@@ -22,10 +22,35 @@ public class ReadFile {
         }
     }
 
+    public void readOptionByte(int Option) throws Exception {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename) , 16 * 1024)){
+            String line = br.readLine();
+            for(int i = 0; i < Option; i++){
+                System.out.println(line.charAt(i));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void readLine() throws Exception {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename) , 16 * 1024)){
+            String line;
+            while((line = br.readLine()) != null){
+                System.out.println(line);
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     public static void main(String[] args) throws Exception {
         ReadFile readFile = new ReadFile("./a_file.txt");
-        char c = (char)readFile.readAByte();
+        char c = (char)readFile.readOneByte();
         System.out.println(c);
+        readFile.readLine();
+        readFile.readOptionByte(3);
     }
 }
