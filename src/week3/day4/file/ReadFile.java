@@ -25,6 +25,7 @@ public class ReadFile {
 
     public static void main(String[] args) throws Exception {
         ReadFile readFile = new ReadFile("./a_file.txt");
-        System.out.println(readFile.readAByte());
+        char c = (char)readFile.readAByte();
+        System.out.println(c);
     }
 }
