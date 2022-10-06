@@ -1,3 +1,4 @@
+<img src="https://user-images.githubusercontent.com/101695482/193738973-d6a68b74-cc8f-4486-b068-301374dc4ef6.jpg" width="30%" height="30%" title="LikeLion" alt="LikeLion"></img>
 # likelion_course
 멋쟁이사자처럼 백앤드 스쿨 2기 수업 정리
 
