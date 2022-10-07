@@ -44,4 +44,8 @@
       - N Byte Read
       - Line Read
 
+### day 5
+- 대용량 데이터 처리
+  - 2021 서울에서 가장 많이 이사간 지역 분석
+
 </details>
