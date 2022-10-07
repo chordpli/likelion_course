@@ -1,4 +1,4 @@
-package week3.day5.mdis;
+package week3.day5.mdis.self;
 
 import java.util.List;
 
