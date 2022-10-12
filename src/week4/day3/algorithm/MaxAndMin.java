@@ -17,7 +17,7 @@ public class MaxAndMin {
         return targetValue;
     }
 
-    public int max(int[] arr){
+    public int max(int[] arr) {
         return getMaxOrMin(arr, new Compare() {
             @Override
             public boolean doSomething(int valueA, int valueB) {
@@ -36,7 +36,6 @@ public class MaxAndMin {
     }
 
     public static void main(String[] args) {
-
         int[] arr = new int[]{3, 29, 38, 12, 57, 74, 30, 85, 61};
         MaxAndMin maxAndMin = new MaxAndMin();
         int maxResult = maxAndMin.max(arr);

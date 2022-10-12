@@ -2,9 +2,8 @@ package com.line;
 
 import com.line.parser.Parser;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,5 +32,28 @@ public class LineReader<T> {
             result.add(parser.parse(str));
         }
         return result;
+    }
+
+    public void createFile(String filename) {
+        File file = new File(filename);
+        try {
+            file.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void write(List<String> strs, String filename) {
+        File file = new File(filename);
+
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(file));
+            for (String str : strs) {
+                bw.write(str);
+            }
+            bw.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
