@@ -52,3 +52,33 @@
   - 2021 서울에서 가장 많이 이사간 지역 분석
 
 </details>
+
+## Week4 (10.11 ~ 10.14) 
+<details><summary> Days </summary>
+
+### day 2
+ - Programmers
+   - 자릿수 더하기
+ - Code Up
+   - C1278, 1620
+ - AWS
+   - Docker
+     - MySQL 연결
+   - Xshell
+ - MySQL
+   - create table
+   - insert values
+
+### day 3
+- Algorithm
+  - Code Up
+    - getMaxOrMin
+      - C1278, 1620
+- 대용량 데이터 가공
+  - MySQL
+    - 서울시 병의원 데이터
+  - Parse OOP 활용
+
+
+
+</details>
