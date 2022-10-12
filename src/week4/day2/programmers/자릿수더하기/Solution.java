@@ -1,4 +1,4 @@
-package week4.programmers.자릿수더하기;
+package week4.day2.programmers.자릿수더하기;
 
 public class Solution {
     // 문자열 변환 후 자릿수별 숫자 더하기
