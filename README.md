@@ -79,6 +79,14 @@
     - 서울시 병의원 데이터
   - Parse OOP 활용
 
-
+### day 4
+- Algorithm
+    - Sort
+      - bubbleSort
+- 대용량 데이터 가공
+  - TDD
+  - DB Insert
+  - parse
+  
 
 </details>
