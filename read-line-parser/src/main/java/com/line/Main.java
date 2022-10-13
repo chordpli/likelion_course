@@ -10,7 +10,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) throws IOException {
         LineReader<Hospital> hospitalLineReader = new LineReader<>(new HospitalParser());
-        String filename = "P:\\TechIt\\교재\\week4\\서울시 병의원 위치 정보.csv";
+        String filename = "P:\\TechIt\\교재\\week4\\seoul_hospital_info.csv";
 
         List<Hospital> hospitals = hospitalLineReader.readLines(filename);
 
