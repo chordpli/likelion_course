@@ -6,20 +6,17 @@ public class HospitalParser implements Parser<Hospital> {
 
     @Override
     public Hospital parse(String str) {
+        str = str.replaceAll("\"", "");
         String[] splitted = str.split(",");
-        return new Hospital(removeDQM(splitted[0]), removeDQM(splitted[1]), getDistrict(splitted[1]), removeDQM(splitted[2])
-                , getNumber(splitted[6]), removeDQM(splitted[10]), getSubdivision(removeDQM(splitted[10])));
-    }
-
-    public String removeDQM(String str) {
-        return str.replaceAll("\"", "");
+        return new Hospital(splitted[0], splitted[1], splitted[2]
+                , getNumber(splitted[6]), splitted[10], getSubdivision(splitted[10]));
     }
 
     public String getDistrict(String str) {
         if(str.contains("구로구")){
             return "구로구";
         }else{
-            return removeDQM(str.substring(0, str.indexOf("구") + 1));
+            return str.substring(0, str.indexOf("구") + 1);
         }
     }
 
@@ -60,6 +57,6 @@ public class HospitalParser implements Parser<Hospital> {
     }
 
     public int getNumber(String str) {
-        return Integer.parseInt(removeDQM(str));
+        return Integer.parseInt(str);
     }
 }

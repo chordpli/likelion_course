@@ -7,15 +7,16 @@ public class Hospital {
     private String category;    // [2]
     private int emergencyRoom;  // [6]
     private String name;        // [10]
-    private String subdivision; // [7]
+    private String subdivision; // [10] 수정
 
     public Hospital() {
     }
 
-    public Hospital(String id, String address, String district, String category, int emergencyRoom, String name, String subdivision) {
+    public Hospital(String id, String address, String category, int emergencyRoom, String name, String subdivision) {
         this.id = id;
         this.address = address;
-        this.district = district;
+        String[] splitted = this.address.split(" ");
+        this.district = String.format("%s %s", splitted[0], splitted[1]);
         this.category = category;
         this.emergencyRoom = emergencyRoom;
         this.name = name;
