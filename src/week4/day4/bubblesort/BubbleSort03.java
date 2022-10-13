@@ -2,9 +2,9 @@ package week4.day4.bubblesort;
 
 import java.util.Arrays;
 
-public class BubbleSort01 {
+public class BubbleSort03 {
     public static void main(String[] args) {
-        BubbleSort01 bubbleSort = new BubbleSort01();
+        BubbleSort03 bubbleSort = new BubbleSort03();
         int[] arr = {7, 2, 3, 9, 28, 11};
 
         int[] sort = bubbleSort.sort(arr);
@@ -13,19 +13,20 @@ public class BubbleSort01 {
     }
 
     public int[] sort(int[] arr) {
-        int j = 0;
         for (int i = 0; i < arr.length - 1; i++) {
-                if (arr[j] > arr[i]) {
-                    swap(arr, i);
+            for (int j = i+1; j < arr.length; j++) {
+                if (arr[i] > arr[j]) {
+                    swap(arr, i, j);
                 }
+            }
         }
         return arr;
     }
 
-    public int[] swap(int[] arr, int i) {
-        int tmp = arr[0];
-        arr[0] = arr[i];
-        arr[i] = tmp;
+    public int[] swap(int[] arr, int i, int j) {
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
         return arr;
     }
 }
