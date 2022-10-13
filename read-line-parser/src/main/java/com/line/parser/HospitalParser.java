@@ -16,7 +16,11 @@ public class HospitalParser implements Parser<Hospital> {
     }
 
     public String getDistrict(String str) {
-        return removeDQM(str.substring(0, str.indexOf("구") + 1));
+        if(str.contains("구로구")){
+            return "구로구";
+        }else{
+            return removeDQM(str.substring(0, str.indexOf("구") + 1));
+        }
     }
 
     public String getSubdivision(String str) {

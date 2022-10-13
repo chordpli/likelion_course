@@ -25,8 +25,8 @@ public class Main {
                     "VALUES\n" +
                     "('" + hospital.getId() + "', '" + hospital.getAddress() + "', " +
                     "'" + hospital.getDistrict() + "', '" + hospital.getCategory() + "', " + hospital.getEmergencyRoom() + ", '" + hospital.getName() + "', '" + hospital.getSubdivision() + "'); \n";
-
             output.add(s);
+            System.out.println(s);
         }
         hospitalLineReader.write(output, newFileName);
     }

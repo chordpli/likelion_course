@@ -3,7 +3,6 @@ package com.line;
 import com.line.parser.Parser;
 
 import java.io.*;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +21,7 @@ public class LineReader<T> {
 
     public List<T> readLines(String filename) throws IOException {
         BufferedReader br = new BufferedReader(new FileReader(filename));
+        //BufferedReader br = Files.newBufferedReader(Paths.get(filename), StandardCharsets.UTF_8);
         List<T> result = new ArrayList<>();
         String str;
         if (isRemoveColumnName) {
