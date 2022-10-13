@@ -22,9 +22,10 @@ public class Main {
         hospitalLineReader.createFile(newFileName);
 
         List<String> output = new ArrayList<>();
+        output.add(hospital.getSQL());
 
         for (Hospital h : hospitals) {
-            String sql = h.getSQL();
+            String sql = h.getTupleString();
             output.add(sql);
         }
 

@@ -18,8 +18,6 @@ public class Hospital {
     public Hospital(String id, String address, String category, int emergencyRoom, String name, String subdivision) {
         this.id = id;
         this.address = address;
-        /*String[] splitted = this.address.split(" ");
-        this.district = String.format("%s %s", splitted[0], splitted[1]);*/
         this.category = category;
         this.emergencyRoom = emergencyRoom;
         this.name = name;
@@ -66,9 +64,13 @@ public class Hospital {
     public String getSQL() {
         String sql = "INSERT INTO `likelion-db`.`seoul_hospital`\n" +
                 "(`id`, `address`, `district`, `category`, `emergency_room`, `name`, `subdivision`)\n" +
-                "VALUES\n" +
-                "('" + this.getId() + "', '" + this.getAddress() + "', " +
-                "'" + this.getDistrict() + "', '" + this.getCategory() + "', " + this.getEmergencyRoom() + ", '" + this.getName() + "', '" + this.getSubdivision() + "');\n";
+                "VALUES\n";
+        return sql;
+    }
+
+    public String getTupleString(){
+        String sql = "('" + this.getId() + "', '" + this.getAddress() + "', " +
+                "'" + this.getDistrict() + "', '" + this.getCategory() + "', " + this.getEmergencyRoom() + ", '" + this.getName() + "', '" + this.getSubdivision() + "'),\n";
         return sql;
     }
 }
