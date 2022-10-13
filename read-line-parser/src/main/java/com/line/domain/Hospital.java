@@ -1,5 +1,8 @@
 package com.line.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Hospital {
     private String id;          // [0]
     private String address;     // [1]
@@ -15,15 +18,21 @@ public class Hospital {
     public Hospital(String id, String address, String category, int emergencyRoom, String name, String subdivision) {
         this.id = id;
         this.address = address;
-        String[] splitted = this.address.split(" ");
-        this.district = String.format("%s %s", splitted[0], splitted[1]);
+        /*String[] splitted = this.address.split(" ");
+        this.district = String.format("%s %s", splitted[0], splitted[1]);*/
         this.category = category;
         this.emergencyRoom = emergencyRoom;
         this.name = name;
         this.subdivision = subdivision;
+        this.setDistrict(this.address);
     }
 
     public Hospital(String s) {
+    }
+
+    public void setDistrict(String address) {
+        String[] splitted = this.address.split(" ");
+        this.district = String.format("%s %s", splitted[0], splitted[1]);
     }
 
     public String getId() {
@@ -52,5 +61,14 @@ public class Hospital {
 
     public String getSubdivision() {
         return subdivision;
+    }
+
+    public String getSQL() {
+        String sql = "INSERT INTO `likelion-db`.`seoul_hospital`\n" +
+                "(`id`, `address`, `district`, `category`, `emergency_room`, `name`, `subdivision`)\n" +
+                "VALUES\n" +
+                "('" + this.getId() + "', '" + this.getAddress() + "', " +
+                "'" + this.getDistrict() + "', '" + this.getCategory() + "', " + this.getEmergencyRoom() + ", '" + this.getName() + "', '" + this.getSubdivision() + "');\n";
+        return sql;
     }
 }
