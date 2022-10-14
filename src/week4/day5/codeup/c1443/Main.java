@@ -1,9 +1,8 @@
-package week4.day5.algorithm.insertionsort;
+package week4.day5.codeup.c1443;
 
-import java.util.Arrays;
+import java.util.Scanner;
 
-public class InsertionSort {
-
+public class Main {
     public int[] sort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
             int tmp = i;
@@ -26,11 +25,19 @@ public class InsertionSort {
     }
 
     public static void main(String[] args) {
-        int[] arr = {8, 5, 6, 2, 4};
+        Scanner sc = new Scanner(System.in);
+        Main main = new Main();
+        int n = sc.nextInt();
+        int[] arr = new int[n];
 
-        InsertionSort is = new InsertionSort();
-        arr = is.sort(arr);
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = sc.nextInt();
+        }
 
-        System.out.println(Arrays.toString(arr));
+        arr = main.sort(arr);
+
+        for (int i : arr) {
+            System.out.println(i);
+        }
     }
 }
