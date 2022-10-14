@@ -7,19 +7,22 @@ public class InsertionSort {
     public int[] sort(int[] arr) {
 
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i - 1; j < arr.length; j++) {
-                if (arr[i] > arr[j]) {
-                    arr = swap(arr, i, j);
+            int tmp = i;
+            while (i != 0) {
+                if (arr[i] < arr[i - 1]) {
+                    arr = swap(arr, i);
                 }
+                i--;
             }
+            i = tmp;
         }
         return arr;
     }
 
-    public int[] swap(int[] arr, int i, int j) {
+    public int[] swap(int[] arr, int i) {
         int tmp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = tmp;
+        arr[i] = arr[i - 1];
+        arr[i - 1] = tmp;
         return arr;
     }
 
