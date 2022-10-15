@@ -5,14 +5,11 @@ import java.util.Scanner;
 public class Main {
     public int[] sort(int[] arr) {
         for (int i = 1; i < arr.length; i++) {
-            int tmp = i;
-            while (i != 0) {
-                if (arr[i] < arr[i - 1]) {
-                    arr = swap(arr, i);
+            for (int j = i; j > 0; j--) {
+                if (arr[j] < arr[j - 1]) {
+                    arr = swap(arr, j);
                 }
-                i--;
             }
-            i = tmp;
         }
         return arr;
     }
