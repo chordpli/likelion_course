@@ -16,12 +16,12 @@ public class Hospital {
     }
 
     public Hospital(String id, String address, String category, int emergencyRoom, String name, String subdivision) {
-        this.id = id;
-        this.address = address;
-        this.category = category;
+        this.id = id.replaceAll("\"","");
+        this.address = address.replaceAll("\"","");
+        this.category = category.replaceAll("\"","");
         this.emergencyRoom = emergencyRoom;
-        this.name = name;
-        this.subdivision = subdivision;
+        this.name = name.replaceAll("\"","");
+        this.subdivision = subdivision.replaceAll("\"","");
         this.setDistrict(this.address);
     }
 
@@ -68,9 +68,17 @@ public class Hospital {
         return sql;
     }
 
-    public String getTupleString(){
+    public String getTupleString() {
         String sql = "('" + this.getId() + "', '" + this.getAddress() + "', " +
                 "'" + this.getDistrict() + "', '" + this.getCategory() + "', " + this.getEmergencyRoom() + ", '" + this.getName() + "', '" + this.getSubdivision() + "'),\n";
+        return sql;
+    }
+
+    public String getSqlInsertQuery2() {
+        String sql = String.format("INSERT INTO `likelion-db`.`seoul_hospital`(`id`, `address`, `district`, `category`, `emergency_room`, `name`, `subdivision`)\n" +
+                        "VALUES\n" +
+                        "(\'%s\', \'%s\', \'%s\', \'%s\', %d, \'%s\', \'%s\');",
+                this.id, this.address, this.district, this.category, this.emergencyRoom, this.name, this.subdivision);
         return sql;
     }
 }
