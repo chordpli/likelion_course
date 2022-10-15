@@ -82,11 +82,15 @@
 ### day 4
 - Algorithm
     - Sort
-      - bubbleSort
+      - bubble Sort
 - 대용량 데이터 가공
   - TDD
   - DB Insert
   - parse
-  
+
+### day 5
+- Algorith
+  - Sort
+    - Insertion Sort
 
 </details>
