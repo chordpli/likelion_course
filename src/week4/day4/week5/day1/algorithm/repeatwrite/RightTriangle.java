@@ -1,4 +1,4 @@
-package week5.day1.algorithm.repeatwrite;
+package week4.day4.week5.day1.algorithm.repeatwrite;
 
 import java.util.Scanner;
 
