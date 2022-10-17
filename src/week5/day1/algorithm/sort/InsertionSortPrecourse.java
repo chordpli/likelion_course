@@ -1,4 +1,4 @@
-package week4.day4.week5.day1.algorithm.sort;
+package week5.day1.algorithm.sort;
 
 import java.util.Arrays;
 
