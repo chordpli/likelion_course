@@ -28,7 +28,7 @@ public class Main {
         //List<String> output = new ArrayList<>();
         //output.add(hospital.getSQL());
 
-        Connection c = DriverManager.getConnection("jdbc:mysql://localhost/t3.small.docker", "root", "1234");
+        Connection c = DriverManager.getConnection("", "", "");
         PreparedStatement ps = c.prepareStatement("INSERT INTO `likelion-db`.`seoul_hospital` (`id`, `address`, `district`, `category`, `emergency_room`, `name`, `subdivision`)" +
                 "VALUES (?, ?, ?, ?, ?,?, ?)");
 
