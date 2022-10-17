@@ -1,5 +1,7 @@
 package week5.day1.algorithm.star;
 
+import java.util.Scanner;
+
 public class RightTriangle {
     public static void main(String[] args) {
         /*System.out.println("*");
@@ -7,12 +9,15 @@ public class RightTriangle {
         System.out.println("***");
         System.out.println("****");
         */
-
-        for (int i = 1; i <= 4; i++) {
+        Scanner sc = new Scanner(System.in);
+        int count = sc.nextInt();
+        for (int i = 1; i <= count; i++) {
             for (int j = 1; j <= i; j++) {
                 System.out.print("*");
             }
-            System.out.println();
+            if (i != count) {
+                System.out.println();
+            }
         }
     }
 }
