@@ -1,4 +1,4 @@
-package week5.day1.codeup.c1089;
+package week5.day2.codeup.c1091;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -10,12 +10,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int a = Integer.parseInt(st.nextToken());
-        int d = Integer.parseInt(st.nextToken());
-        int n = Integer.parseInt(st.nextToken());
+        long a = Long.parseLong(st.nextToken());
+        long m = Long.parseLong(st.nextToken());
+        long d = Long.parseLong(st.nextToken());
+        long n = Long.parseLong(st.nextToken());
 
         for (int i = 0; i < n-1; i++) {
-            a += d;
+            a = a * m + d;
         }
         System.out.println(a);
     }

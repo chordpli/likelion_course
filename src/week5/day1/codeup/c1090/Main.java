@@ -1,21 +1,23 @@
 
 package week5.day1.codeup.c1090;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
 public class Main {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int a = sc.nextInt();
-        int tmp = 0;
+    public static void main(String[] args) throws IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine());
 
-        for (int i = 0; ; i++) {
-            if (tmp + i >= a) {
-                System.out.println(i);
-                break;
-            }
-            tmp += i;
+        long a = Long.parseLong(st.nextToken());
+        long r = Long.parseLong(st.nextToken());
+        long n = Long.parseLong(st.nextToken());
+
+        for (int i = 0; i < n-1; i++) {
+            a *= r;
         }
-        sc.close();
+        System.out.println(a);
     }
 }
