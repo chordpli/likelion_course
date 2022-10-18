@@ -12,12 +12,13 @@ public class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int h = Integer.parseInt(st.nextToken());
-        int b = Integer.parseInt(st.nextToken());
-        int c = Integer.parseInt(st.nextToken());
-        int s = Integer.parseInt(st.nextToken());
+        double h = Double.parseDouble(st.nextToken());
+        double b = Double.parseDouble(st.nextToken());
+        double c = Double.parseDouble(st.nextToken());
+        double s = Double.parseDouble(st.nextToken());
+        double result = (double) (h * b * c * s) / 8 / 1048576;
 
-        System.out.println((double) (h * b * c * s)/8 + " MB");
+        System.out.printf("%.1f MB", result);
 
     }
 }

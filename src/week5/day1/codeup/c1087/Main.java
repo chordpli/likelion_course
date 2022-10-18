@@ -6,9 +6,12 @@ public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
-
-        for (int i = 0; i <= a; i++) {
-            System.out.println(i);
+        int tmp = 0;
+        for (int i = 1; ; i++) {
+            if (tmp + i > a) {
+                System.out.println(tmp+i);
+                break;
+            }
         }
         sc.close();
     }
