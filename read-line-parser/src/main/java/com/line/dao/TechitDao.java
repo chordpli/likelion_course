@@ -5,8 +5,8 @@ import com.line.domain.User;
 import java.sql.*;
 import java.util.Map;
 
-public class UserDao {
-
+public class TechitDao extends UserDaoAbstract{
+    @Override
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         Map<String, String> env = System.getenv();
         String dbHost = env.get("DB_HOST");
@@ -18,6 +18,7 @@ public class UserDao {
 
         return conn;
     }
+
     public User getInfoWhereId(String id) throws SQLException, ClassNotFoundException {
         Connection conn = getConnection();
         String sql = "select id, name, password from users where id= ?";
@@ -54,5 +55,4 @@ public class UserDao {
         userDao.add(new User("6", "Ruru", "1234qwer"));
         System.out.println(userDao.getInfoWhereId("05"));
     }
-
 }
