@@ -89,8 +89,28 @@
   - parse
 
 ### day 5
-- Algorith
+- Algorithm
   - Sort
     - Insertion Sort
+</details>
+
+## Week5 (10.17 ~ 21)
+
+<details><summary> Days </summary>
+
+### day 1
+- Algorithm
+  - RepeatWrite
+- codeup
+  - c1443
+- DB & Gradle 연결
+  - select, insert
+
+### day 2
+- Algorithm
+  - 정사각형, 직사각형 그리기
+- codeup
+    - c1859
+
 
 </details>
