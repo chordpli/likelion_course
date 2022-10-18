@@ -1,26 +1,21 @@
-package com.line.dao;
+package com.tobiexercise02.dao;
 
 import com.line.domain.User;
 
-import java.sql.*;
-import java.util.Map;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
-public class TechitDao extends UserDaoAbstract{
-    @Override
-    public Connection getConnection() throws ClassNotFoundException, SQLException {
-        Map<String, String> env = System.getenv();
-        String dbHost = env.get("DB_HOST");
-        String dbUser = env.get("DB_USER");
-        String dbPassword = env.get("DB_PASSWORD");
+public class UserDao {
+    private ConnectionMaker connectionMaker;
 
-        Class.forName("com.mysql.cj.jdbc.Driver");
-        Connection conn = DriverManager.getConnection(dbHost, dbUser, dbPassword);
-
-        return conn;
+    public UserDao() {
+        this.connectionMaker = new AWSConnectionMaker();
     }
 
     public User get(String id) throws SQLException, ClassNotFoundException {
-        Connection conn = getConnection();
+        Connection conn = connectionMaker.makeConnection();
         String sql = "select id, name, password from users where id= ?";
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setString(1, id);
@@ -36,7 +31,7 @@ public class TechitDao extends UserDaoAbstract{
     }
 
     public void add(User user) throws SQLException, ClassNotFoundException {
-        Connection conn = getConnection();
+        Connection conn = connectionMaker.makeConnection();
         String sql = "Insert into users(id, name, password) values(?,?,?)";
 
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -51,8 +46,9 @@ public class TechitDao extends UserDaoAbstract{
 
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        TechitDao techitDao = new TechitDao();
-        //techitDao.add(new User("6", "Ruru", "1234qwer"));
-        System.out.println(techitDao.get("05"));
+        UserDao userDao = new UserDao();
+        //userDao.add(new User("6", "Ruru", "1234qwer"));
+        System.out.println(userDao.get("6"));
     }
+
 }

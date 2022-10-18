@@ -9,12 +9,12 @@ import java.sql.SQLException;
 class UserDaoTest {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
-        User user = new User("8", "EternityHwan", "1123");
-        userDao.add(user);
+        AWSUserDaoImpl userDao = new AWSUserDaoImpl();
+        User user = new User("9", "HiHwan", "1123");
+        //userDao.add(user);
 
-        User selectedUser = userDao.getInfoWhereId("8");
-        Assertions.assertEquals("EternityHwan", selectedUser.getName());
+        User selectedUser = userDao.get("9");
+        Assertions.assertEquals("HiHwan", selectedUser.getName());
 
     }
 
