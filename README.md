@@ -112,5 +112,10 @@
 - codeup
     - c1859
 
+### day 3
+- Data Structure
+    - Stack
+- codeup
+    - c1859
 
 </details>
