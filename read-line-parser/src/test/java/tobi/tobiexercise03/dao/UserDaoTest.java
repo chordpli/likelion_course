@@ -1,6 +1,7 @@
 package tobi.tobiexercise03.dao;
 
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -20,9 +21,14 @@ class UserDaoTest {
     @Autowired
     ApplicationContext context;
 
+    @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
-        String id ="21";
+        UserDao userDao2 = context.getBean("awsUserDao", UserDao.class);
+        System.out.println(userDao);
+        System.out.println(userDao2);
+
+        String id ="22";
         userDao.add(new User(id, "Nunu", "11223"));
 
         User user = userDao.get(id);
