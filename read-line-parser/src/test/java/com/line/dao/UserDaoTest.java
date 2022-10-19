@@ -3,6 +3,8 @@ package com.line.dao;
 import com.line.domain.User;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import tobi.tobiexercise03.dao.UserDao;
+import tobi.tobiexercise03.dao.UserDaoFactory;
 
 import java.sql.SQLException;
 
@@ -15,7 +17,6 @@ class UserDaoTest {
 
         User selectedUser = userDao.get("9");
         Assertions.assertEquals("HiHwan", selectedUser.getName());
-
     }
 
 }
