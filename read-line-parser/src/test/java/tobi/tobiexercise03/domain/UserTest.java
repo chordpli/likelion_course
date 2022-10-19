@@ -6,6 +6,7 @@ import tobi.tobiexercise03.dao.UserDaoFactory;
 
 import java.sql.SQLException;
 
+
 class UserTest {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
