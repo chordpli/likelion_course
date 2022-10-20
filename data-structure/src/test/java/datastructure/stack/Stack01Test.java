@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class Stack01Test {
     @Test
-    @DisplayName("push가 잘 되는지 pop이 잘 되는지")
+    @DisplayName("push test")
     void pushAndPop(){
         Stack01 stack01 = new Stack01();
         stack01.push(10);
