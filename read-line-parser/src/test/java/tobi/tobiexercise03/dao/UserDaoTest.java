@@ -25,10 +25,17 @@ class UserDaoTest {
     @Autowired
     ApplicationContext context;
     UserDao userDao;
+    User user1;
+    User user2;
+    User user3;
+
     // @before -> beforeEach
     @BeforeEach
-    void setUp(){
+    void setUp() {
         this.userDao = context.getBean("awsUserDao", UserDao.class);
+        User user1 = new User("1", "경환", "33");
+        User user2 = new User("2", "소현", "22");
+        User user3 = new User("3", "수진", "11");
     }
 
     @Test
@@ -37,7 +44,7 @@ class UserDaoTest {
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
 
-        String id ="23";
+        String id = "23";
         userDao.add(new User(id, "Nunu", "11223"));
         assertEquals(1, userDao.getCount());
 
@@ -48,9 +55,7 @@ class UserDaoTest {
 
     @Test
     void count() throws SQLException, ClassNotFoundException {
-        User user1 = new User("1", "경환", "33");
-        User user2 = new User("2", "소현", "22");
-        User user3 = new User("3", "수진", "11");
+
 
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
@@ -72,8 +77,8 @@ class UserDaoTest {
     }
 
     @Test
-    void findById(){
-        assertThrows(EmptyResultDataAccessException.class, () ->{
+    void findById() {
+        assertThrows(EmptyResultDataAccessException.class, () -> {
             userDao.get("30");
         });
     }

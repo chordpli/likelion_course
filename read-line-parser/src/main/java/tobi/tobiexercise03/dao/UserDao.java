@@ -85,31 +85,71 @@ public class UserDao {
     }
 
     public void deleteAll() throws SQLException, ClassNotFoundException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+
         try {
-            Connection conn = cm.makeConnection();
+            conn = cm.makeConnection();
             String sql = "delete from users";
-            PreparedStatement ps = conn.prepareStatement(sql);
+            ps = conn.prepareStatement(sql);
             ps.executeUpdate();
-            ps.close();
-            conn.close();
         } catch (SQLException e) {
-            throw new RuntimeException();
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
         }
     }
 
     public int getCount() throws SQLException, ClassNotFoundException {
-        Connection conn = cm.makeConnection();
-        String sql = " select count(*) from users";
-        PreparedStatement ps = conn.prepareStatement(sql);
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = cm.makeConnection();
+            String sql = " select count(*) from users";
+            ps = conn.prepareStatement(sql);
 
-        ResultSet rs = ps.executeQuery();
-        rs.next();
-        int count = rs.getInt(1);
+            rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
 
-        rs.close();
-        ps.close();
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
 
-        return count;
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+
+
+        }
 
     }
 
