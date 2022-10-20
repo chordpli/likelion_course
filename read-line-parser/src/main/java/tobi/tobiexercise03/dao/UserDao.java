@@ -67,6 +67,15 @@ public class UserDao {
         ps.close();
     }
 
+    public void deleteAll() throws SQLException, ClassNotFoundException {
+        try {
+            Connection conn = cm.makeConnection();
+            String sql = "delete from users";
+            PreparedStatement ps = conn.prepareStatement(sql);
+        } catch (SQLException e) {
+            throw new RuntimeException();
+        }
+    }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
