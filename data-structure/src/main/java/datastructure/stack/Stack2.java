@@ -1,16 +1,16 @@
 package datastructure.stack;
 
-public class Stack2 <T>{
+public class Stack2{
 
-    private Integer[] arr;
+    private Object[] arr;
     private int pointer = 0;
 
     public Stack2() {
-        this.arr = new Integer[10000];
+        this.arr = new Object[10000];
     }
 
     public Stack2(int size) {
-        this.arr = new Integer[size];
+        this.arr = new Object[size];
     }
 
     public void push(int value) {
@@ -19,12 +19,12 @@ public class Stack2 <T>{
         this.pointer++;
     }
 
-    public Integer[] getArr() {
+    public Object[] getArr() {
         return arr;
     }
 
-    public int pop() {
-        int value = this.arr[this.pointer-1];
+    public Object pop() {
+        Object value = (int) this.arr[this.pointer-1];
         pointer--;
         return value;
     }
