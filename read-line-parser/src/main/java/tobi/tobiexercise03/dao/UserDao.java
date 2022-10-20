@@ -1,5 +1,7 @@
 package tobi.tobiexercise03.dao;
 
+import org.junit.jupiter.api.Test;
+import org.springframework.dao.EmptyResultDataAccessException;
 import tobi.tobiexercise03.domain.User;
 
 import java.sql.Connection;
@@ -23,17 +25,32 @@ public class UserDao {
 
     public User get(String id) throws ClassNotFoundException, SQLException {
         Connection conn = cm.makeConnection();
-        String sql = "select id, name, password from users where id=?";
-        PreparedStatement ps = conn.prepareStatement(sql);
-        ps.setString(1, id);
-        ResultSet rs = ps.executeQuery();
+        try {
+            // query문 작성
+            String sql = "select id, name, password from users where id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, id);
 
-        rs.next();
-        User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
-        rs.close();
-        ps.close();
-        conn.close();
-        return user;
+            //query문 실행
+            User user = null;
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+                user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            }
+            rs.close();
+            ps.close();
+            conn.close();
+
+            // 없으면 exception
+            if (user == null) {
+                throw new EmptyResultDataAccessException(1);
+            }
+
+            return user;
+        } catch (SQLException e) {
+            throw new SQLException();
+        }
     }
 
     public List<User> findAll() throws ClassNotFoundException, SQLException {
@@ -72,6 +89,9 @@ public class UserDao {
             Connection conn = cm.makeConnection();
             String sql = "delete from users";
             PreparedStatement ps = conn.prepareStatement(sql);
+            ps.executeUpdate();
+            ps.close();
+            conn.close();
         } catch (SQLException e) {
             throw new RuntimeException();
         }
