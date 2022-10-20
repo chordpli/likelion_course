@@ -59,6 +59,19 @@ class Stack2Test {
     }
 
     @Test
+    void peek(){
+        Stack2 st = new Stack2();
+        assertThrows(EmptyStackException.class, () -> {
+            st.peek();
+        });
+
+        st.push(10);
+        int peeked = st.peek();
+        assertEquals(10, peeked);
+        assertFalse(st.isEmpty());
+    }
+
+    @Test
     void readlStack(){
         Stack<Integer> st = new Stack<>();
         assertThrows(EmptyStackException.class, () ->{
