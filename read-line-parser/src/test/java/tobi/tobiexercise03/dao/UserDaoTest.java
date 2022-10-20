@@ -11,6 +11,9 @@ import tobi.tobiexercise03.domain.User;
 
 import java.sql.SQLException;
 
+import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.internal.bytebuddy.matcher.ElementMatchers.is;
+
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = UserDaoFactory.class)
 class UserDaoTest {
@@ -30,6 +33,15 @@ class UserDaoTest {
 
         User user = userDao.get(id);
         Assertions.assertEquals("Nunu", user.getName());
+
+    }
+
+    @Test
+    public void addAndGet() throws SQLException, ClassNotFoundException {
+        UserDao userDao = context.getBean("awsUserDao", UserDao.class);
+
+        userDao.deleteAll();
+
 
     }
 }
