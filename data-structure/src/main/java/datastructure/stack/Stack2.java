@@ -1,5 +1,7 @@
 package datastructure.stack;
 
+import java.util.EmptyStackException;
+
 public class Stack2 <T>{
 
     private Integer[] arr;
@@ -15,8 +17,7 @@ public class Stack2 <T>{
 
     public void push(int value) {
         // 10을 넣으면 arr[0] = 10이 들어간다.
-        this.arr[pointer] = value;
-        this.pointer++;
+        this.arr[this.pointer++] = value;
     }
 
     public Integer[] getArr() {
@@ -24,8 +25,14 @@ public class Stack2 <T>{
     }
 
     public int pop() {
-        int value = this.arr[this.pointer-1];
-        pointer--;
-        return value;
+        if (this.isEmpty()) {
+            throw new EmptyStackException();
+        }
+        return this.arr[--this.pointer];
+    }
+
+    public boolean isEmpty() {
+        boolean isEmpty = this.pointer == 0;
+        return isEmpty;
     }
 }
