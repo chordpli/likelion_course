@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.dao.EmptyResultDataAccessException;
 import tobi.tobiexercise03.domain.User;
 
+import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -49,6 +50,7 @@ public class UserDao {
             }
         }
     }
+
     public User get(String id) throws ClassNotFoundException, SQLException {
         Connection conn = cm.makeConnection();
         try {
@@ -96,9 +98,23 @@ public class UserDao {
         return userList;
     }
 
-    public void add(User user) throws SQLException, ClassNotFoundException {
-        StatementStrategy st = new AddStatement(user);
-        jdbcContextWithStatementStrategy(st);
+    public void add(final User user) throws SQLException {
+        jdbcContextWithStatementStrategy(
+                new StatementStrategy() {
+                    @Override
+                    public PreparedStatement makePreparedStatement(Connection connection) throws SQLException {
+                        PreparedStatement ps = connection.prepareStatement("insert into users(id, name, password) values(?,?,?)");
+                        ps.setString(1, user.getId());
+                        ps.setString(2, user.getName());
+                        ps.setString(3, user.getPassword());
+                        return ps;
+                    }
+                }
+        );
+
+
+        /*StatementStrategy st = new AddStatement();
+        jdbcContextWithStatementStrategy(st);*/
         /*Connection conn = cm.makeConnection();
         String sql = "Insert into users(id, name, password) values(?,?,?)";
 
