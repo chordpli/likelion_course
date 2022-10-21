@@ -23,6 +23,32 @@ public class UserDao {
         this.cm = connectionMaker;
     }
 
+    public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+
+        try {
+            conn = cm.makeConnection();
+            ps = stmt.makePreparedStatement(conn);
+            ps.executeUpdate();
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                }
+            }
+
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
     public User get(String id) throws ClassNotFoundException, SQLException {
         Connection conn = cm.makeConnection();
         try {
@@ -71,7 +97,9 @@ public class UserDao {
     }
 
     public void add(User user) throws SQLException, ClassNotFoundException {
-        Connection conn = cm.makeConnection();
+        StatementStrategy st = new AddStatement(user);
+        jdbcContextWithStatementStrategy(st);
+        /*Connection conn = cm.makeConnection();
         String sql = "Insert into users(id, name, password) values(?,?,?)";
 
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -81,35 +109,13 @@ public class UserDao {
         ps.setString(3, user.getPassword());
 
         ps.executeUpdate();
-        ps.close();
+        ps.close();*/
     }
 
     public void deleteAll() throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement ps = null;
-
-        try {
-            conn = cm.makeConnection();
-            String sql = "delete from users";
-            ps = conn.prepareStatement(sql);
-            ps.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        } finally {
-            if (ps != null) {
-                try {
-                    ps.close();
-                } catch (SQLException e) {
-                }
-            }
-
-            if (conn != null) {
-                try {
-                    conn.close();
-                } catch (SQLException e) {
-                }
-            }
-        }
+        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
     }
 
     public int getCount() throws SQLException, ClassNotFoundException {
@@ -147,8 +153,6 @@ public class UserDao {
                 } catch (SQLException e) {
                 }
             }
-
-
         }
 
     }
