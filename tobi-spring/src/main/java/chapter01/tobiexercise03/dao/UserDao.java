@@ -54,19 +54,109 @@ public class UserDao {
     }
 
     public void add(User user) throws SQLException, ClassNotFoundException {
-        Connection conn = cm.makeConnection();
-        String sql = "Insert into users(id, name, password) values(?,?,?)";
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = cm.makeConnection();
+            String sql = "Insert into users(id, name, password) values(?,?,?)";
+            ps = conn.prepareStatement(sql);
 
-        PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, user.getId());
+            ps.setString(2, user.getName());
+            ps.setString(3, user.getPassword());
 
-        ps.setString(1, user.getId());
-        ps.setString(2, user.getName());
-        ps.setString(3, user.getPassword());
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+                    System.out.println(e.getStackTrace());
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                    System.out.println(e.getStackTrace());
+                }
+            }
+        }
 
-        ps.executeUpdate();
+
+
+
         ps.close();
     }
 
+    public void deleteAll() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        try {
+            conn = cm.makeConnection();
+            String sql = "delete from users";
+            ps = conn.prepareStatement(sql);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+
+                }
+            }
+        }
+    }
+
+    public int getCount() throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        try {
+            conn = cm.makeConnection();
+            String sql = "select count(*) from users";
+            ps = conn.prepareStatement(sql);
+
+            rs = ps.executeQuery();
+            rs.next();
+            return rs.getInt(1);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            if (rs != null) {
+                try {
+                    rs.close();
+                } catch (SQLException e) {
+                }
+            }
+
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException e) {
+
+                }
+            }
+            if (conn != null) {
+                try {
+                    conn.close();
+                } catch (SQLException e) {
+                }
+            }
+        }
+    }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         UserDao userDao = new UserDao();
