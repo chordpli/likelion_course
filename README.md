@@ -115,7 +115,21 @@
 ### day 3
 - Data Structure
     - Stack
+      - push()
+      - pop()
 - codeup
     - c1859
+- Spring 연결
+  - Inversion of Control
+- Single Ton Pattern
+- 
+### day 4
+- Data Structure
+    - Stack
+      - isEmpty()
+      - EmptyStackException
+
+- Spring
+  - TDD
 
 </details>

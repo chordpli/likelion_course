@@ -30,16 +30,22 @@ class UserDaoTest {
     User user3;
 
     // @before -> beforeEach
-    @BeforeEach
-    void setUp() {
-        this.userDao = context.getBean("awsUserDao", UserDao.class);
-        User user1 = new User("1", "경환", "33");
-        User user2 = new User("2", "소현", "22");
-        User user3 = new User("3", "수진", "11");
-    }
+//    @BeforeEach
+//    void setUp() {
+//        this.userDao = context.getBean("awsUserDao", UserDao.class);
+//        UserDao userDao2 = context.getBean("awsUserDao", UserDao.class); // 싱글톤 테스트
+//        User user1 = new User("1", "경환", "33");
+//        User user2 = new User("2", "소현", "22");
+//        User user3 = new User("3", "수진", "11");
+//    }
 
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
+        this.userDao = context.getBean("awsUserDao", UserDao.class);
+        UserDao userDao2 = context.getBean("localUserDao", UserDao.class);
+
+        System.out.println(userDao);
+        System.out.println(userDao2);
 
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
