@@ -18,6 +18,6 @@ public class AddStatement implements StatementStrategy{
         ps.setString(1, user.getId());
         ps.setString(2, user.getName());
         ps.setString(3, user.getPassword());
-        return null;
+        return ps;
     }
 }

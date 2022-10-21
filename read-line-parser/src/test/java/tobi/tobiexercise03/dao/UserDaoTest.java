@@ -42,15 +42,15 @@ class UserDaoTest {
     @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
         this.userDao = context.getBean("awsUserDao", UserDao.class);
-        UserDao userDao2 = context.getBean("localUserDao", UserDao.class);
+        //UserDao userDao2 = context.getBean("localUserDao", UserDao.class);
 
         System.out.println(userDao);
-        System.out.println(userDao2);
+        //System.out.println(userDao2);
 
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
 
-        String id = "23";
+        String id = "24";
         userDao.add(new User(id, "Nunu", "11223"));
         assertEquals(1, userDao.getCount());
 
