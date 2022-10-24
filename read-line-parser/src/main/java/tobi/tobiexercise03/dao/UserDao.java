@@ -1,6 +1,8 @@
 package tobi.tobiexercise03.dao;
 
 import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import tobi.tobiexercise03.domain.User;
 
 import javax.sql.DataSource;
@@ -14,12 +16,18 @@ import java.util.List;
 public class UserDao {
 
     private ConnectionMaker cm;
-    private final DataSource dataSource;
+    private DataSource dataSource;
     private final JdbcContext jdbcContext;
+    private JdbcTemplate jdbcTemplate;
 
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
         this.jdbcContext = new JdbcContext(dataSource);
+    }
+
+    public void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+        this.dataSource = dataSource;
     }
     public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
         Connection conn = null;
@@ -140,7 +148,16 @@ public class UserDao {
     }*/
 
     public void deleteAll() throws SQLException {
-        this.jdbcContext.executeSql("delete from users");
+        this.jdbcTemplate.update(
+                new PreparedStatementCreator() {
+                    @Override
+                    public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+                        return con.prepareStatement("delete from users");
+                    }
+                }
+
+        );
+        //this.jdbcContext.executeSql("delete from users");
     }
 
     public int getCount() throws SQLException, ClassNotFoundException {
