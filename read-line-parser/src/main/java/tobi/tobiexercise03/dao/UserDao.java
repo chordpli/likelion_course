@@ -181,17 +181,17 @@ public class UserDao {
         }
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao(dataSource);
-        User user = userDao.get("1");
-        System.out.println(user);
-
-        List<User> userList = new ArrayList<>();
-        userList = userDao.findAll();
-
-        for (User u : userList) {
-            System.out.println(u);
-        }
-    }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        UserDao userDao = new UserDao(dataSource);
+//        User user = userDao.get("1");
+//        System.out.println(user);
+//
+//        List<User> userList = new ArrayList<>();
+//        userList = userDao.findAll();
+//
+//        for (User u : userList) {
+//            System.out.println(u);
+//        }
+//    }
 
 }

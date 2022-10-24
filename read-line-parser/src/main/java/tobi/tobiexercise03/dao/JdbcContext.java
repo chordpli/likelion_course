@@ -17,7 +17,7 @@ public class JdbcContext {
         PreparedStatement pstmt = null;
         try {
             conn = dataSource.getConnection();
-            pstmt = stmt.makePreparedStatement();
+            pstmt = stmt.makePreparedStatement(conn);
             pstmt.executeUpdate();
         } catch (Exception e) {
             throw new RuntimeException(e);

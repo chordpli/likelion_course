@@ -58,7 +58,7 @@ class UserDaoTest {
 
     @Test
     void count() throws SQLException, ClassNotFoundException {
-
+        this.userDao = context.getBean("awsUserDao", UserDao.class);
 
         userDao.deleteAll();
         assertEquals(0, userDao.getCount());
