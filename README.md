@@ -132,4 +132,24 @@
 - Spring
   - TDD
 
+### day 5
+- Stack
+  - codeup
+  - programmers
+- Spring
+  - 전략 패턴
+</details>
+
+## Week6 (10.24 ~ 28)
+
+<details>
+<summary> Days </summary>
+
+### day 1
+- Algorithm
+  - PriorityQueue
+- Programmers
+  - p42746
+- Spring
+
 </details>
