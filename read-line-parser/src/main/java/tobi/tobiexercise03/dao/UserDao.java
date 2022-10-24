@@ -1,10 +1,9 @@
 package tobi.tobiexercise03.dao;
 
-import org.junit.jupiter.api.Test;
 import org.springframework.dao.EmptyResultDataAccessException;
 import tobi.tobiexercise03.domain.User;
 
-import javax.swing.plaf.nimbus.State;
+import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,24 +14,23 @@ import java.util.List;
 public class UserDao {
 
     private ConnectionMaker cm;
+    private final DataSource dataSource;
+    private final JdbcContext jdbcContext;
 
-    public UserDao() {
-        this.cm = new AWSConnectionMaker();
+    public UserDao(DataSource dataSource) {
+        this.dataSource = dataSource;
+        this.jdbcContext = new JdbcContext(dataSource);
     }
-
-    public UserDao(ConnectionMaker connectionMaker) {
-        this.cm = connectionMaker;
-    }
-
     public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
 
         try {
-            conn = cm.makeConnection();
+            //conn = cm.makeConnection();
+            conn = dataSource.getConnection();
             ps = stmt.makePreparedStatement(conn);
             ps.executeUpdate();
-        } catch (SQLException | ClassNotFoundException e) {
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         } finally {
             if (ps != null) {
@@ -128,10 +126,21 @@ public class UserDao {
         ps.close();*/
     }
 
-    public void deleteAll() throws SQLException, ClassNotFoundException {
-        Connection conn = null;
+/*    public void deleteAll() throws SQLException, ClassNotFoundException {
+        *//*Connection conn = null;
         PreparedStatement ps = null;
-        jdbcContextWithStatementStrategy(new DeleteAllStrategy());
+        jdbcContextWithStatementStrategy(new DeleteAllStrategy());*//*
+        StatementStrategy deleteAllStrategy = new StatementStrategy() {
+            @Override
+            public PreparedStatement makePreparedStatement(Connection connection) throws SQLException {
+                return connection.prepareStatement("delete from users");
+            }
+        };
+        jdbcContextWithStatementStrategy(deleteAllStrategy);
+    }*/
+
+    public void deleteAll() throws SQLException {
+        this.jdbcContext.executeSql("delete from users");
     }
 
     public int getCount() throws SQLException, ClassNotFoundException {
@@ -170,11 +179,10 @@ public class UserDao {
                 }
             }
         }
-
     }
 
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        UserDao userDao = new UserDao();
+        UserDao userDao = new UserDao(dataSource);
         User user = userDao.get("1");
         System.out.println(user);
 
