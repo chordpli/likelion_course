@@ -94,7 +94,7 @@
     - Insertion Sort
 </details>
 
-## Week5 (10.17 ~ 21)
+## Week5 (10.17 ~ 10.21)
 
 <details><summary> Days </summary>
 
