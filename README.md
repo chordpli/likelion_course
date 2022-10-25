@@ -154,10 +154,10 @@
 
 ### day 2
 - Algorithm
-    - Hash
+  - Hash
 - Programmers
-    - p42576
-    - 
+  - p42576
 - Spring
+  -  토비의 스프링 1 ~ 3장 복습
 
 </details>
