@@ -1,18 +1,17 @@
 package tobi.tobiexercise03.dao;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
-import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import tobi.tobiexercise03.domain.User;
 
-import java.sql.SQLException;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = UserDaoFactory.class)
@@ -26,17 +25,17 @@ class UserDaoTest {
     User user2;
     User user3;
 
-    // @before -> beforeEach
-//    @BeforeEach
-//    void setUp() {
-//        this.userDao = context.getBean("awsUserDao", UserDao.class);
-//        UserDao userDao2 = context.getBean("awsUserDao", UserDao.class); // 싱글톤 테스트
-//        User user1 = new User("1", "경환", "33");
-//        User user2 = new User("2", "소현", "22");
-//        User user3 = new User("3", "수진", "11");
-//    }
+    //@before -> beforeEach
+    @BeforeEach
+    void setUp() {
+        this.userDao = context.getBean("awsUserDao", UserDao.class);
+        user1 = new User("1", "경환", "33");
+        user2 = new User("2", "소현", "22");
+        user3 = new User("3", "수진", "11");
+        userDao.deleteAll();
+    }
 
-    @Test
+/*    @Test
     void addAndSelect() throws SQLException, ClassNotFoundException {
         this.userDao = context.getBean("awsUserDao", UserDao.class);
         //UserDao userDao2 = context.getBean("localUserDao", UserDao.class);
@@ -51,7 +50,7 @@ class UserDaoTest {
         userDao.add(new User(id, "Nunu", "11223"));
         assertEquals(1, userDao.getCount());
 
-        User user = userDao.get(id);
+        User user = userDao.findById(id);
         assertEquals("Nunu", user.getName());
 
     }
@@ -71,10 +70,10 @@ class UserDaoTest {
         assertEquals(3, userDao.getCount());
 
 
-        User userGet1 = userDao.get(user1.getId());
+        User userGet1 = userDao.findById(user1.getId());
         assertEquals(userGet1.getName(), user1.getName());
         assertEquals(userGet1.getPassword(), user1.getPassword());
-        User userGet2 = userDao.get(user2.getId());
+        User userGet2 = userDao.findById(user2.getId());
         assertEquals(userGet2.getName(), user2.getName());
         assertEquals(userGet2.getPassword(), user2.getPassword());
     }
@@ -82,7 +81,7 @@ class UserDaoTest {
     @Test
     void findById() {
         assertThrows(EmptyResultDataAccessException.class, () -> {
-            userDao.get("30");
+            userDao.findById("30");
         });
     }
 
@@ -90,5 +89,20 @@ class UserDaoTest {
     public void addAndGet() throws SQLException, ClassNotFoundException {
         UserDao userDao = context.getBean("awsUserDao", UserDao.class);
         userDao.deleteAll();
+    }*/
+
+    @Test
+    void getAllTest() {
+        userDao.deleteAll();
+        List<User> users = userDao.getAll();
+        assertEquals(0, users.size());
+
+        userDao.add(user1);
+        userDao.add(user2);
+        userDao.add(user3);
+        users = userDao.getAll();
+        assertEquals(3, users.size());
+
+        throws NullPointerException;
     }
 }

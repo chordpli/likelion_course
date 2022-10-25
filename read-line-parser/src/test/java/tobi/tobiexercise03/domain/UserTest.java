@@ -14,7 +14,7 @@ class UserTest {
         String id ="21";
         userDao.add(new User(id, "Nunu", "11223"));
 
-        User user = userDao.get(id);
+        //User user = userDao.get(id);
     }
 
 }

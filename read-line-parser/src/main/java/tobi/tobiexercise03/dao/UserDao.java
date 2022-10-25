@@ -3,6 +3,7 @@ package tobi.tobiexercise03.dao;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.RowMapper;
 import tobi.tobiexercise03.domain.User;
 
 import javax.sql.DataSource;
@@ -15,20 +16,29 @@ import java.util.List;
 
 public class UserDao {
 
-    private ConnectionMaker cm;
+    //private ConnectionMaker cm;
     private DataSource dataSource;
-    private final JdbcContext jdbcContext;
+    //private final JdbcContext jdbcContext;
     private JdbcTemplate jdbcTemplate;
 
     public UserDao(DataSource dataSource) {
         this.dataSource = dataSource;
-        this.jdbcContext = new JdbcContext(dataSource);
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
+
+    RowMapper<User> rowMapper = new RowMapper<User>() {
+        @Override
+        public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+            User user = new User(rs.getString("id"), rs.getString("name"), rs.getString("password"));
+            return user;
+        }
+    };
 
     public void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
         this.dataSource = dataSource;
     }
+
     public void jdbcContextWithStatementStrategy(StatementStrategy stmt) throws SQLException {
         Connection conn = null;
         PreparedStatement ps = null;
@@ -57,7 +67,7 @@ public class UserDao {
         }
     }
 
-    public User get(String id) throws ClassNotFoundException, SQLException {
+    /*public User get(String id) throws ClassNotFoundException, SQLException {
         Connection conn = cm.makeConnection();
         try {
             // query문 작성
@@ -85,9 +95,32 @@ public class UserDao {
         } catch (SQLException e) {
             throw new SQLException();
         }
+    }*/
+    public User findById(String id) {
+        String sql = "select * from users where id = ?";
+        return this.jdbcTemplate.queryForObject(sql, rowMapper, id);
     }
 
-    public List<User> findAll() throws ClassNotFoundException, SQLException {
+    public List<User> getAll() {
+        String sql = "select * from users order by id";
+        return this.jdbcTemplate.query(sql, rowMapper);
+    }
+
+    public void add(final User user) {
+        this.jdbcTemplate.update("insert into users(id, name, password) values(?,?,?);",
+                user.getId(), user.getName(), user.getPassword());
+    }
+
+    public void deleteAll() {
+        this.jdbcTemplate.update("delete from users");
+        //this.jdbcContext.executeSql("delete from users");
+    }
+
+    public int getCount() {
+        return this.jdbcTemplate.queryForObject("select count(*) from users", Integer.class);
+    }
+
+    /*    public List<User> findAll() throws ClassNotFoundException, SQLException {
         Connection conn = cm.makeConnection();
         String sql = "select id, name, password from users";
         PreparedStatement ps = conn.prepareStatement(sql);
@@ -102,9 +135,8 @@ public class UserDao {
         ps.close();
         conn.close();
         return userList;
-    }
-
-    public void add(final User user) throws SQLException {
+    }*/
+    /*public void add(final User user) throws SQLException {
         jdbcContextWithStatementStrategy(
                 new StatementStrategy() {
                     @Override
@@ -116,26 +148,11 @@ public class UserDao {
                         return ps;
                     }
                 }
-        );
+        );*/
 
 
-        /*StatementStrategy st = new AddStatement();
-        jdbcContextWithStatementStrategy(st);*/
-        /*Connection conn = cm.makeConnection();
-        String sql = "Insert into users(id, name, password) values(?,?,?)";
-
-        PreparedStatement ps = conn.prepareStatement(sql);
-
-        ps.setString(1, user.getId());
-        ps.setString(2, user.getName());
-        ps.setString(3, user.getPassword());
-
-        ps.executeUpdate();
-        ps.close();*/
-    }
-
-/*    public void deleteAll() throws SQLException, ClassNotFoundException {
-        *//*Connection conn = null;
+    /*    public void deleteAll() throws SQLException, ClassNotFoundException {
+     *//*Connection conn = null;
         PreparedStatement ps = null;
         jdbcContextWithStatementStrategy(new DeleteAllStrategy());*//*
         StatementStrategy deleteAllStrategy = new StatementStrategy() {
@@ -147,20 +164,9 @@ public class UserDao {
         jdbcContextWithStatementStrategy(deleteAllStrategy);
     }*/
 
-    public void deleteAll() throws SQLException {
-        this.jdbcTemplate.update(
-                new PreparedStatementCreator() {
-                    @Override
-                    public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-                        return con.prepareStatement("delete from users");
-                    }
-                }
 
-        );
-        //this.jdbcContext.executeSql("delete from users");
-    }
-
-    public int getCount() throws SQLException, ClassNotFoundException {
+    // 코드가 변경되었기 때문에 강사님 블로그 참고.
+/*    public int getCount() throws SQLException, ClassNotFoundException {
         Connection conn = null;
         PreparedStatement ps = null;
         ResultSet rs = null;
@@ -196,19 +202,7 @@ public class UserDao {
                 }
             }
         }
-    }
+    }*/
 
-//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-//        UserDao userDao = new UserDao(dataSource);
-//        User user = userDao.get("1");
-//        System.out.println(user);
-//
-//        List<User> userList = new ArrayList<>();
-//        userList = userDao.findAll();
-//
-//        for (User u : userList) {
-//            System.out.println(u);
-//        }
-//    }
 
 }
