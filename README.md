@@ -158,6 +158,12 @@
 - Programmers
   - p42576
 - Spring
-  -  토비의 스프링 1 ~ 3장 복습
+  - 토비의 스프링 1 ~ 3장 복습
+
+### day 3
+- Algorithm
+  - Hash
+    - Node 추가
+- Spring
 
 </details>
