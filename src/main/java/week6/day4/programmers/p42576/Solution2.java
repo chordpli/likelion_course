@@ -14,8 +14,8 @@ public class Solution2 {
         // value 1
         for (String key : completion) {
             memo.merge(key, -1, Integer::sum);
-            //memo.put(key, memo.get(key) - 1);
         }
+
         for (String key : memo.keySet()) {
             if (memo.get(key) == 1) {
                 answer = key;
@@ -23,8 +23,5 @@ public class Solution2 {
             }
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
     }
 }
