@@ -19,7 +19,6 @@ public class Solution2 {
         for (String key : memo.keySet()) {
             if (memo.get(key) == 1) {
                 answer = key;
-
             }
         }
         return answer;
