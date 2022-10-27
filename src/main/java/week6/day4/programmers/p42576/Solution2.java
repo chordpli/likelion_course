@@ -7,20 +7,24 @@ public class Solution2 {
     public String solution(String[] participant, String[] completion) {
         Map<String, Integer> memo = new HashMap<>();
         String answer = "";
-        for (int i = 0; i < participant.length; i++) {
-            String key = participant[i];
+        for (String key : participant) {
             memo.merge(key, 1, Integer::sum);
-
         }
-        for (int i = 0; i < completion.length; i++) {
-            String key = completion[i]; // value 1
-            memo.put(key, memo.get(key) - 1);
+
+        // value 1
+        for (String key : completion) {
+            memo.merge(key, -1, Integer::sum);
+            //memo.put(key, memo.get(key) - 1);
         }
         for (String key : memo.keySet()) {
             if (memo.get(key) == 1) {
                 answer = key;
+
             }
         }
         return answer;
+    }
+
+    public static void main(String[] args) {
     }
 }
