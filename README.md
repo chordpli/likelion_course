@@ -165,5 +165,28 @@
   - Hash
     - Node 추가
 - Spring
+### day 3
+- Algorithm
+  - Hash
+    - Node 추가
+- Spring
 
+### day 4
+- Algorithm
+  - Hash
+    - Programmers
+      - p 42576
+- Spring
+  - Get, Post, Put, Delete
+  - Swagger
+
+### day 5
+- Algorithm
+  - Hash
+    - Programmers
+      - p 1845
+- Spring
+  - Logger
+  - ORM(Object Relational Mapping)
+  - 
 </details>
