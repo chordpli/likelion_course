@@ -103,6 +103,6 @@ class UserDaoTest {
         users = userDao.getAll();
         assertEquals(3, users.size());
 
-        throws NullPointerException;
+        //throws NullPointerException;
     }
 }
