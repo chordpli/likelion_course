@@ -7,15 +7,11 @@ public class Solution {
         boolean answer = true;
         Set<String> phoneBook = organizePhonebook(phone_book);
         List<String> check = insertList(phoneBook);
+        Collections.sort(check);
 
-        for (int i = 0; i < check.size() - 1; i++) {
-            String compareWordA = check.get(i);
-            for (int j = i + 1; j < check.size(); j++) {
-                String compareWordB = check.get(j);
-                if (compareWordA.contains(compareWordB) || compareWordB.contains(compareWordA)) {
-                    return false;
-                }
-            }
+        for (int i = 0; i < check.size()-1; i++) {
+            if(check.get(i+1).startsWith(check.get(i)))
+                answer = false;
         }
         return answer;
     }
@@ -26,11 +22,5 @@ public class Solution {
 
     public List<String> insertList(Set<String> phonebook) {
         return new ArrayList<>(phonebook);
-    }
-
-    public static void main(String[] args) {
-        Solution p = new Solution();
-        String[] s = {"934793", "34", "44", "9347"};
-        System.out.println(p.solution(s));
     }
 }
