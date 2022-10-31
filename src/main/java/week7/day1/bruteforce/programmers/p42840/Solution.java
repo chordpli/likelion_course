@@ -36,7 +36,6 @@ public class Solution {
         int thirdGaveUpScore = returnScore(answers, thirdGaveUp);
 
         List<Student> students = listInit(firstGaveUpScore, secondGaveUpScore, thirdGaveUpScore);
-
         return returnResult(students);
     }
 
@@ -52,7 +51,6 @@ public class Solution {
                 break;
             }
         }
-
         return answer;
     }
 
