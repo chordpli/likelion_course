@@ -188,5 +188,19 @@
 - Spring
   - Logger
   - ORM(Object Relational Mapping)
-  - 
+</details>
+
+## Week7 (10.31 ~ 11.03)
+
+<details>
+<summary> Days </summary>
+
+### day 1
+- Algorithm
+    - bruteforce
+- Programmers
+    - 42840
+- Spring
+  - lineParser
+
 </details>
