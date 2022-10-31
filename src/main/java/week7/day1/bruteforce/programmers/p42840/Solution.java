@@ -73,7 +73,6 @@ public class Solution {
         students.add(s01);
         students.add(s02);
         students.add(s03);
-
         return students;
     }
 }
