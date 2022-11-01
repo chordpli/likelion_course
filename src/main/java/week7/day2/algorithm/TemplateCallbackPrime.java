@@ -17,7 +17,6 @@ public class TemplateCallbackPrime {
 
     public static void main(String[] args) {
         TemplateCallbackPrime tcp = new TemplateCallbackPrime();
-        boolean r = tcp.isPrime(17);
-        System.out.println(r);
+        System.out.println(tcp.isPrime(17,(a,b) -> a*a <b));
     }
 }
