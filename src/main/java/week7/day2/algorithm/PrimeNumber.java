@@ -17,7 +17,9 @@ public class PrimeNumber {
 
     public static void main(String[] args) {
         PrimeNumber p = new PrimeNumber();
-        int number = 13;
-        System.out.println(p.firstMethod(number));
+        System.out.println(p.firstMethod(13));
+        System.out.println(p.firstMethod(17));
+        System.out.println(p.firstMethod(19));
+        System.out.println(p.firstMethod(23));
     }
 }
