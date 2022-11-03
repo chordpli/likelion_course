@@ -14,5 +14,11 @@ public class Practice02 {
             nums[i] = i + 2;
         }
 
+        // 2의 배수 지우기
+        int multipleof =2;
+        for (int i = 2; i < nums.length; i += 2) {
+            checks[i] = false;
+        }
+
     }
 }
