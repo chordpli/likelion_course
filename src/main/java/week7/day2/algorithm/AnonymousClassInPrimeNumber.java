@@ -1,5 +1,9 @@
 package week7.day2.algorithm;
 
+interface Strategy{
+    boolean compare(int a, int b);
+}
+
 public class AnonymousClassInPrimeNumber {
     boolean isPrime(int num, StatementStrategy stmt) {
         for (int i = 2; stmt.compare(i, num); i++) {
