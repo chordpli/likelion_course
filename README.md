@@ -203,4 +203,29 @@
 - Spring
   - lineParser
 
+### day 2
+- Algorithm
+  - Prime Number
+    - Strategy
+- DB
+  - Delete, Select
+
+### day 3
+- Algorithm
+    - Prime Number
+        - 에라토스테네스의 체
+- DB
+    - Delete, Select
+### day 4
+- Algorithm
+    - Prime Number
+        - 에라토스테네스의 체
+- Docker
+  - image
+  - container
+  - WordPress
+  - option
+    - -it -i -t -d -p -e
+  - Priority, Property
+  - volume
 </details>
