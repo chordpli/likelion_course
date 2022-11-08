@@ -229,3 +229,21 @@
   - Priority, Property
   - volume
 </details>
+
+## Week8 (11.07 ~ 11.11)
+
+<details>
+<summary> Days </summary>
+
+### day 1
+- Programmers
+  - 12947
+  - 12910 
+- Spring
+    - lineParser
+
+### day 2
+- algorithm
+  - binary search
+    - c3001
+</details>
