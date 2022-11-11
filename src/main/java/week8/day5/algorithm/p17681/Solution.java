@@ -14,7 +14,16 @@ public class Solution {
             }
             a /= 2;
         }
+        addZero(sb);
         return String.valueOf(sb);
+    }
+
+    private void addZero(StringBuilder sb) {
+        if (sb.length() < 5) {
+            for (int i = sb.length(); i < 5; i++) {
+                sb.insert(0, '0');
+            }
+        }
     }
 
     public String[] solution(int n, int[] arr1, int[] arr2) {
@@ -22,16 +31,12 @@ public class Solution {
 
 
         // arr1을 2진수로 변환
-        String[] arr1ToString = new String[arr1.length];
-        for (int i = 0; i < arr1.length; i++) {
-            arr1ToString[i] = Integer.toBinaryString(arr1[i]);
-            addZero(arr1ToString, i);
-        }
         // arr2를 2진수로 변환
+        String[] arr1ToString = new String[arr1.length];
         String[] arr2ToString = new String[arr2.length];
-        for (int i = 0; i < arr2.length; i++) {
-            arr2ToString[i] = Integer.toBinaryString(arr2[i]);
-            addZero(arr2ToString, i);
+        for (int i = 0; i < arr1.length; i++) {
+            arr1ToString[i] = toBinary(arr1[i]);
+            arr2ToString[i] = toBinary(arr1[i]);
         }
 
         // 1인 경우에는 #
@@ -50,21 +55,12 @@ public class Solution {
         return answer;
     }
 
-    private void addZero(String[] arr1ToString, int i) {
-
-        if (arr1ToString[i].length() < 5) {
-            for (int j = arr1ToString.length; j <= 5; j++) {
-                arr1ToString[i] += "0" + arr1ToString[i];
-            }
-        }
-    }
-
     public static void main(String[] args) {
         Solution s = new Solution();
         int n = 5;
         int[] arr1 = {9, 20, 28, 18, 11};
         int[] arr2 = {30, 1, 21, 17, 28};
 
-        System.out.println(s.toBinary(13));
+        System.out.println(Arrays.toString(s.solution(n, arr1, arr2)));
     }
 }
