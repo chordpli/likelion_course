@@ -26,35 +26,37 @@ public class Solution {
         }
     }
 
+    private void appendResult(String[] arr1ToBinary, String[] arr2ToBinary, int i, StringBuilder result, int j) {
+        if (arr1ToBinary[i].charAt(j) == '1' || arr2ToBinary[i].charAt(j) == '1') {
+            result.append("#");
+        } else {
+            result.append(" ");
+        }
+    }
+
     public String[] solution(int n, int[] arr1, int[] arr2) {
         String[] answer = new String[n];
 
-
-        // arr1을 2진수로 변환
-        // arr2를 2진수로 변환
-        String[] arr1ToString = new String[arr1.length];
-        String[] arr2ToString = new String[arr2.length];
+        // arr1, arr2를 2진수로 변환
+        String[] arr1ToBinary = new String[arr1.length];
+        String[] arr2ToBinary = new String[arr2.length];
         for (int i = 0; i < arr1.length; i++) {
-            arr1ToString[i] = toBinary(arr1[i], n);
-            arr2ToString[i] = toBinary(arr2[i], n );
+            arr1ToBinary[i] = toBinary(arr1[i], n);
+            arr2ToBinary[i] = toBinary(arr2[i], n );
         }
 
-        // 1인 경우에는 #
-        // 0인 경우에는 " "을 출력한다.
+        // 1인 경우에는 #, 0인 경우에는 " "을 출력한다.
         for (int i = 0; i < n; i++) {
             StringBuilder result = new StringBuilder();
-
-            for (int j = 0; j < arr1ToString.length; j++) {
-                if (arr1ToString[i].charAt(j) == '1' || arr2ToString[i].charAt(j) == '1') {
-                    result.append("#");
-                } else {
-                    result.append(" ");
-                }
+            for (int j = 0; j < arr1ToBinary.length; j++) {
+                appendResult(arr1ToBinary, arr2ToBinary, i, result, j);
             }
             answer[i] = String.valueOf(result);
         }
         return answer;
     }
+
+
 
     public static void main(String[] args) {
         Solution s = new Solution();
@@ -66,7 +68,7 @@ public class Solution {
         int[] arr3 = {46, 33, 33 ,22, 31, 50};
         int[] arr4 = {27 ,56, 19, 14, 14, 10};
 
-        //System.out.println(Arrays.toString(s.solution(n, arr1, arr2)));
+        System.out.println(Arrays.toString(s.solution(n, arr1, arr2)));
         System.out.println(Arrays.toString(s.solution(n2, arr3, arr4)));
     }
 }
