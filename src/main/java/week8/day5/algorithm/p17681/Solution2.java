@@ -12,7 +12,7 @@ public class Solution2 {
         String[] arrToBinary = new String[n];
         for (int i = 0; i < n; i++) {
             arrToBinary[i] = Integer.toBinaryString(arr1[i] | arr2[i]);
-            for (int j = arrToBinary[i].length(); j <= n ; j++) {
+            for (int j = arrToBinary[i].length(); j < n ; j++) {
                 arrToBinary[i] = "0" + arrToBinary[i];
             }
         }
