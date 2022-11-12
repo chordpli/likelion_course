@@ -246,4 +246,22 @@
 - algorithm
   - binary search
     - c3001
+
+### day 3
+- algorithm
+    - Selection Sort
+
+### day 4
+- algorithm
+    - Stack
+- Spring
+  - board
+    - docker
+
+### day 5
+- algorithm
+    - Integer.BinaryToString
+- Spring
+  - board
+    - hospital info
 </details>
