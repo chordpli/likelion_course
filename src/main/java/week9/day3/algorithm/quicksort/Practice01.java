@@ -19,25 +19,25 @@ public class Practice01 {
         int pivot = arr[arr.length / 2];
         int leftIdx = 0;
         int rightIdx = arr.length - 1;
-        while (true) {
+        while (arr[leftIdx] < pivot) {
             if (pivot > arr[leftIdx]) {
                 leftIdx += 1;
             }
 
-            if (pivot < arr[rightIdx]) {
-                rightIdx -= 1;
+            /*if (leftIdx <= arr[rightIdx]) {
+                int temp = leftIdx;
+                leftIdx = rightIdx;
+                rightIdx = temp;
             }
 
-            if (arr[leftIdx] <= arr[rightIdx]) {
+            if (arr[leftIdx] > arr[rightIdx] ) {
                 int temp = arr[leftIdx];
                 arr[leftIdx] = arr[rightIdx];
                 arr[rightIdx] = temp;
 
                 leftIdx += 1;
                 rightIdx -= 1;
-                break;
-
-            }
+            }*/
         }
         System.out.println(Arrays.toString(arr));
     }
