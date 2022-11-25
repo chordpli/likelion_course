@@ -13,9 +13,7 @@ public class Nain {
                 a -= b;
                 continue;
             }
-            if (a < b) {
-                b -= a;
-            }
+            b -= a;
         }
         System.out.println(a);
     }
