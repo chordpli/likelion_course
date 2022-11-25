@@ -11,6 +11,7 @@ public class Nain {
         while (a != b) {
             if (a > b) {
                 a -= b;
+                continue;
             }
             if (a < b) {
                 b -= a;
