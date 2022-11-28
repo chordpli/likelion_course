@@ -7,12 +7,12 @@ public class RecursionAlphabet3 {
         printRecursionAlphabet(2, "");
     }
 
-    public static void printRecursionAlphabet(int n, String prefix) {
-        if (prefix.length() > n) return;
+    public static void printRecursionAlphabet(int depth, String prefix) {
+        if (prefix.length() > depth) return;
         System.out.println(prefix);
 
         for (char c = 'A'; c <= 'Z'; c++) {
-            printRecursionAlphabet(n, prefix + c);
+            printRecursionAlphabet(depth, prefix + c);
         }
     }
 }
