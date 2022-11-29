@@ -14,30 +14,27 @@ public class Practice01 {
     }
 
     public static void main(String[] args) {
-        var arr = new int[]{20, 18, 5, 19, 25, 5, 50, 40};
+        var arr = new int[]{20, 60, 5, 19, 40, 50, 5, 45};
 
         int pivot = arr[arr.length / 2];
         int leftIdx = 0;
         int rightIdx = arr.length - 1;
         while (arr[leftIdx] < pivot) {
-            if (pivot > arr[leftIdx]) {
-                leftIdx += 1;
-            }
 
-            /*if (leftIdx <= arr[rightIdx]) {
-                int temp = leftIdx;
-                leftIdx = rightIdx;
-                rightIdx = temp;
-            }
-
-            if (arr[leftIdx] > arr[rightIdx] ) {
+            if (arr[leftIdx] > pivot) {
+                while(arr[rightIdx]>pivot) {
+                    rightIdx-=1;
+                }
                 int temp = arr[leftIdx];
                 arr[leftIdx] = arr[rightIdx];
                 arr[rightIdx] = temp;
 
                 leftIdx += 1;
                 rightIdx -= 1;
-            }*/
+
+                continue;
+            }
+            leftIdx += 1;
         }
         System.out.println(Arrays.toString(arr));
     }
