@@ -1,4 +1,4 @@
-package week8.day2.algorithm.c3001;
+package week8.day2.algorithm.binarysearch.c3001;
 
 import java.util.Scanner;
 
@@ -13,7 +13,6 @@ public class Main {
         }
 
         int targetNumber = sc.nextInt();
-
 
         int findNumber = -1;
 
