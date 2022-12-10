@@ -359,3 +359,59 @@
     - 연관관계
 
 </details>
+
+## Week11 (11.28 ~ 12.02)
+
+<details>
+<summary> Days </summary>
+
+### day 1
+
+- combination
+  - Recursion
+
+### day 2
+
+- Algorithm
+    - radix sort
+    - 
+- ### day 3
+
+- Algorithm
+    - tree
+- lambda
+
+</details>
+
+## Week12 (12.05 ~ 12.09)
+
+<details>
+<summary> Days </summary>
+
+### day 1
+- Algorithm
+    - heap
+
+### day 2
+- Algorithm
+    - heap
+
+### day 3
+- Algorithm
+    - programmers
+      - p42626
+      - p42627
+
+### day 4
+- Algorithm
+    - DP
+      - FIB
+
+### day 5
+- Algorithm
+    - DP
+      - LCS
+- GitLab
+
+
+</details>
